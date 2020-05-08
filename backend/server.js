@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express()
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -19,7 +19,7 @@ connection.once('open', () => {
 })
 
 const postsRouter = require('./routes/posts');
-const mongoose = require('mongoose');
+const usersRouter = require('./routes/users');
 
 app.use('/posts', postsRouter);
 app.use('/users', usersRouter);
