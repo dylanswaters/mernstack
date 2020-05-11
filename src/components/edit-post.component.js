@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class EditExercise extends Component {
+export default class EditPost extends Component {
   constructor(props) {
     super(props);
 
@@ -74,10 +74,10 @@ export default class EditExercise extends Component {
 
     console.log(post);
 
-    axios.post('https://api-dot-mernstack-276607.wn.r.appspot.com' + this.props.match.params.id, post)
+    axios.post('https://api-dot-mernstack-276607.wn.r.appspot.com/posts/update/' + this.props.match.params.id, post)
       .then(res => console.log(res.data));
 
-    window.location = '/';
+    //window.location = '/';
   }
 
   render() {
@@ -122,7 +122,7 @@ export default class EditExercise extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Edit Post" className="btn btn-primary" />
         </div>
       </form>
     </div>

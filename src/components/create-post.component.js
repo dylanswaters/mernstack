@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateExercise extends Component {
+export default class CreatePost extends Component {
   constructor(props) {
     super(props);
 
@@ -64,9 +64,9 @@ export default class CreateExercise extends Component {
     console.log(post);
 
     axios.post('https://api-dot-mernstack-276607.wn.r.appspot.com/posts/add', post)
-      .then(res => console.log(res.data));
+      .then(res => console.log(res));
 
-    window.location = '/';
+    //window.location = '/';
   }
 
   render() {

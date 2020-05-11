@@ -1,5 +1,7 @@
 runtime: nodejs10
 
+service: dylan
+
 handlers:
   - url: /
     static_files: build/index.html
