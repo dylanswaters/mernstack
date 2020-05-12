@@ -1,10 +1,10 @@
-## 'things:'
+## `things:`
 
-### 'ssl error?'
+### `ssl error?`
 
-### 'content addition
+### `content addition`
 
-### 'user authentication'
+### `user authentication`
 
 ---------------React Stuff-------------------------
 
