@@ -1,3 +1,17 @@
+https://dylan-dot-mernstack-276607.wn.r.appspot.com
+
+http://willtest-dot-mernstack-276607.wn.r.appspot.com/
+
+## `things:`
+
+### `ssl error?`
+
+### `content addition`
+
+### `user authentication`
+
+---------------React Stuff-------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
