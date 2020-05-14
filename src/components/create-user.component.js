@@ -6,10 +6,12 @@ export default class CreateUser extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: ''
+      username: '',
+      password: ''
     }
   }
 
@@ -19,11 +21,18 @@ export default class CreateUser extends Component {
     })
   }
 
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    })
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
-      username: this.state.username
+      username: this.state.username,
+      password: this.state.password
     }
 
     console.log(user);
@@ -48,6 +57,13 @@ export default class CreateUser extends Component {
                 className="form-control"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
+                />
+            <label>Password: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                value={this.state.password}
+                onChange={this.onChangePassword}
                 />
           </div>
           <div className="form-group">
