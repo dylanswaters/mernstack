@@ -4,6 +4,6 @@ import App from './App';
 
 // this is the thing that renders shit on screen
 ReactDOM.render(
-    <App />,
-  document.getElementById('root')
+    <App/>,
+    document.getElementById('root')
 );

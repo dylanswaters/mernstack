@@ -1,8 +1,6 @@
 import React, {Component} from "react";
-import {StyleSheet, View, Text} from "react-native";
-import MaterialUnderlineTextbox from "../components/MaterialUnderlineTextbox";
 import axios from 'axios';
-import {render} from "react-dom";
+import {Link} from "react-router-dom";
 
 
 export default class Login extends Component {
@@ -11,7 +9,6 @@ export default class Login extends Component {
         // Pretty sure this is the part that tells it to update what you see when the described command changes
         this.onEnterUsername = this.onEnterUsername.bind(this);
         this.onEnterPassword = this.onEnterPassword.bind(this);
-        this.onNewAccount = this.onNewAccount.bind(this);
 
         this.state = {
             username: '',
@@ -20,67 +17,55 @@ export default class Login extends Component {
     }
 
     // Setting the payload when entering values? e is the payload
-    onEnterUsername(e){
+    onEnterUsername(e) {
         this.setState({
             username: e.target.value
         })
     }
 
-    onEnterPassword(e){
+    onEnterPassword(e) {
         this.setState({
             password: e.target.value
         })
     }
 
-    // Not sure if this works, but the idea is that it takes you to the account creation page
-    onNewAccount() {
-        window.location = '/account'
+    onSubmit() {
+        axios.get('https://api-dot-mernstack-276607.wn.r.appspot.com/users/')
+            .then(res => console.log(res))
     }
 
-    render(){
+
+    render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.signIn}>Sign In</Text>
-                <MaterialUnderlineTextbox
-                    style={styles.materialUnderlineTextbox}
-                />
-                <MaterialUnderlineTextbox
-                    style={styles.materialUnderlineTextbox}
-                />
-                <Text style={styles.createAccount}>Create Account</Text>
-            </View>
+            <div>
+                <h3>Sign In</h3>
+                <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label>Username: </label>
+                        <input type="text"
+                               required
+                               className="form-control"
+                               value={this.state.username}
+                               onChange={this.onEnterUsername}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password: </label>
+                        <input type="text"
+                               required
+                               className="form-control"
+                               value={this.state.password}
+                               onChange={this.onEnterPassword}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Sign In" className="btn btn-primary"/>
+                    </div>
+                </form>
+                <h4>New User?</h4>
+                <Link to="/user" className="nav-link">Create Account</Link>
+            </div>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    signIn: {
-        fontFamily: "roboto-regular",
-        color: "#121212",
-        height: 35,
-        width: 210,
-        textAlign: "center",
-        marginTop: 102,
-        marginLeft: 83
-    },
-    materialUnderlineTextbox: {
-        height: 43,
-        width: 210,
-        marginTop: 113,
-        marginLeft: 83
-    },
-    createAccount: {
-        fontFamily: "roboto-regular",
-        color: "#121212",
-        height: 53,
-        width: 210,
-        textAlign: "center",
-        marginTop: 94,
-        marginLeft: 83
-    }
-});
-
-// export default LoginComponent; Do we need this?
