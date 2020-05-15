@@ -1,6 +1,6 @@
 runtime: nodejs10
 
-service: dylan
+service: test-will
 
 handlers:
   - url: /
