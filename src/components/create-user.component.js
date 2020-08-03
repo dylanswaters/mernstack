@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+const server = 'http://localhost:5000/'
+
 export default class CreateUser extends Component {
     constructor(props) {
         super(props);
 
         this.onChangeUsername = this.onChangeUsername.bind(this);
+        this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -19,20 +22,29 @@ export default class CreateUser extends Component {
         })
     }
 
+    onChangePassword(e){
+        this.setState({
+            password: e.target.value
+        })
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
         const user = {
-            username: this.state.username
+            username: this.state.username,
+            // password: this.state.password,
+            user_right: "view"
         }
 
         console.log(user);
 
-        axios.post('https://api-dot-mernstack-276607.wn.r.appspot.com/users/add', user)
+        axios.post(server + 'users/add', user)
             .then(res => console.log(res.data));
 
         this.setState({
-            username: ''
+            username: '',
+            password: ''
         })
     }
 
@@ -50,6 +62,15 @@ export default class CreateUser extends Component {
                                onChange={this.onChangeUsername}
                         />
                     </div>
+                    {/*<div className="form-group">*/}
+                    {/*    <label>Password: </label>*/}
+                    {/*    <input type="text"*/}
+                    {/*           required*/}
+                    {/*           className="form-control"*/}
+                    {/*           value={this.state.password}*/}
+                    {/*           onChange={this.onChangePassword}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
                     <div className="form-group">
                         <input type="submit" value="Create User" className="btn btn-primary"/>
                     </div>

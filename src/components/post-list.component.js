@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+const server = 'http://localhost:5000/'
+
 const Post = props => (
     <tr>
         <td>{props.post.username}</td>
@@ -26,7 +28,7 @@ export default class PostList extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api-dot-mernstack-276607.wn.r.appspot.com/posts/')
+        axios.get(server + 'posts/')
             .then(response => {
                 this.setState({posts: response.data})
             })
@@ -36,7 +38,7 @@ export default class PostList extends Component {
     }
 
     deletePost(id) {
-        axios.delete('https://api-dot-mernstack-276607.wn.r.appspot.com/posts/' + id)
+        axios.delete(server + 'posts/' + id)
             .then(response => {
                 console.log(response.data)
             });

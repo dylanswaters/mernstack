@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+const server = 'http://localhost:5000/'
+
 export default class EditPost extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,7 @@ export default class EditPost extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api-dot-mernstack-276607.wn.r.appspot.com/posts/' + this.props.match.params.id)
+        axios.get(server + 'posts/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     username: response.data.username,
@@ -31,7 +33,7 @@ export default class EditPost extends Component {
                 console.log(error);
             })
 
-        axios.get('/users/')
+        axios.get(server + 'users/')
             .then(response => {
                 if (response.data.length > 0) {
                     this.setState({
@@ -55,6 +57,7 @@ export default class EditPost extends Component {
         this.setState({
             postTitle: e.target.value
         })
+        console.log(this.props.match.params.id)
     }
 
     onChangePostContents(e) {
@@ -74,7 +77,7 @@ export default class EditPost extends Component {
 
         console.log(post);
 
-        axios.post('https://api-dot-mernstack-276607.wn.r.appspot.com/posts/update/' + this.props.match.params.id, post)
+        axios.post(server + 'posts/update/' + this.props.match.params.id, post)
             .then(res => console.log(res.data));
 
         //window.location = '/';

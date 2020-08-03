@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import {Link} from "react-router-dom";
 
+const server = 'http://localhost:5000/'
 
 export default class Login extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ export default class Login extends Component {
     }
 
     onSubmit() {
-        axios.get('https://api-dot-mernstack-276607.wn.r.appspot.com/users/')
+        axios.get(server + 'users/')
             .then(res => console.log(res))
     }
 

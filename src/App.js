@@ -8,6 +8,7 @@ import EditPost from "./components/edit-post.component";
 import CreatePost from "./components/create-post.component";
 import CreateUser from "./components/create-user.component";
 import Login from "./components/login.component";
+import Admin from "./components/admin.component";
 
 
 // This determines what 'urls' go to which component
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/edit/:id" exact component={EditPost}/>
                 <Route path="/create" exact component={CreatePost}/>
                 <Route path="/user" exact component={CreateUser}/>
+                <Route path="/admin" exact component={Admin}/>
             </div>
         </Router>
     );

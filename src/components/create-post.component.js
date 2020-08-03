@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+const server = 'http://localhost:5000/'
+
 export default class CreatePost extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +21,7 @@ export default class CreatePost extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api-dot-mernstack-276607.wn.r.appspot.com/users/')
+        axios.get(server + 'users/')
             .then(response => {
                 if (response.data.length > 0) {
                     this.setState({
@@ -63,7 +65,7 @@ export default class CreatePost extends Component {
 
         console.log(post);
 
-        axios.post('https://api-dot-mernstack-276607.wn.r.appspot.com/add', post)
+        axios.post(server + 'add', post)
             .then(res => console.log(res));
 
         //window.location = '/';
